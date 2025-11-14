@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('writers', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->text('spesialis');
-            $table->text('imgWriter');
+            $table->string('Name');
+            $table->string('Email');
+            $table->enum('Spesialis', ['Software Engineering', 'Interactive Multimedia', 'Data Mining']);
+            $table->text('ProfilePicture');
             $table->timestamps();
         });
     }

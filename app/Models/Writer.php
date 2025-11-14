@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Writer extends Model
 {
-     protected $guarded = []; //fieldnya supaya diisi
-    
-    //relation one to many
-    public function comments(){
-        return $this->hasMany(Materi::class);
-    }
+   protected $guarded = [];
+
+   public function materi(){
+        return $this->hasMany(Materi::class, 'writer_id', 'id');
+   }
 }

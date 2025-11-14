@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('materis', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('imgMateri');
-            $table->date('date')->useCurrent();
-            $table->text('deskripsi');
+            $table->string('Title');
+            $table->text('BodyText');
+            $table->text('ArticleImage');
+            $table->foreignId('writer_id')->constrained('writers')->onDelete('cascade')->onUpdate('cascade');
+            $table->date('Date')->useCurrent();
+            $table->enum('Cat', ['Software Engineering', 'Interactive Multimedia', 'Data Mining']);
             $table->timestamps();
-            $table->enum('Kategori', ['Interactive Multimedia', 'Sofware Engineering']);
-            $table->foreignId('writer_id')->constrained('writers')->onDelete('cascade');
         });
     }
 

@@ -1,12 +1,12 @@
 @extends('layout.master')
 
-@section('content')
+@section(section: 'content')
 
 
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>{{ $kategori }}</h1>
+            <h1>{{ $writer->Name }}</h1>
         </div>
     </div>
     <div class="row">
@@ -25,9 +25,9 @@
                     <p class="card-text fs-4 text-truncate-3">{{ $m->BodyText }}</p>
 
                     <div class="d-flex justify-content-end">
-                        <a class="btn btn-dark w-25 rounded-pill" href="{{ route('materiContent', $m->id) }}">
+                        <button type="button" class="btn btn-dark w-25 rounded-pill" >
                             Read More
-                        </a>
+                        </button>
                     </div>
                 </div>
                 </div>
@@ -39,4 +39,5 @@
 
     </div>
 </div>
-@endsection
+
+@endsection     

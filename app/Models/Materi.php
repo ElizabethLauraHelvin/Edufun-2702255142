@@ -8,9 +8,8 @@ class Materi extends Model
 {
     protected $guarded = [];
 
-    //belong to atau berhubungan dengan post, post = one many nya ke comment
-    public function post(){
-        return $this->belongsTo(Writer::class);
+    public function writer(){
+        return $this->belongsTo(Writer::class, 'writer_id', 'id');
     }
 
     public function category(){

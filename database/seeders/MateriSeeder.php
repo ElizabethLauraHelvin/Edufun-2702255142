@@ -2,70 +2,62 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Materi;
+use Faker\Factory as faker;
+use App\Models\Materi as MateriModel;
 
-class MateriSeeder extends Seeder
-{
-    /**
-     * Jalankan seeder untuk tabel materis.
-     */
-    public function run(): void
-    {
-        // Interactive Multimedia
-        Materi::create([
-            'title' => 'Human and Computer Interaction',
-            'imgMateri' => 'im1.jpg',
-            'date' => now(),
-            'deskripsi' => 'Mempelajari bagaimana manusia berinteraksi dengan komputer dan bagaimana merancang sistem interaktif yang intuitif dan efisien.',
-            'Kategori' => 'Interactive Multimedia',
-            'writer_id' => 2, // sesuaikan dengan ID writer yang relevan
-        ]);
+class MateriSeeder extends Seeder{
+    public function run(): void{
 
-        Materi::create([
-            'title' => 'User Experience',
-            'imgMateri' => 'im2.jpg',
-            'date' => now(),
-            'deskripsi' => 'Mengenal konsep dasar UX serta bagaimana merancang pengalaman pengguna yang menyenangkan dan efektif.',
-            'Kategori' => 'Interactive Multimedia',
-            'writer_id' => 2,
-        ]);
+        $faker = Faker::create('id_ID');
 
-        Materi::create([
-            'title' => 'User Experience for Digital Immersive Technology',
-            'imgMateri' => 'im3.jpeg',
-            'date' => now(),
-            'deskripsi' => 'Fokus pada pengalaman pengguna dalam teknologi digital immersive seperti VR dan AR.',
-            'Kategori' => 'Interactive Multimedia',
-            'writer_id' => 2,
-        ]);
+        MateriModel::insert([
+            // --- Interactive Multimedia ---
+            [
+                'Title' => 'Human and Computer Interaction',
+                'BodyText' => $faker->paragraphs(10, true),
+                'ArticleImage' => 'im1.jpg',
+                'Cat' => 'Interactive Multimedia',
+                'writer_id' => 1
+            ],
+            [
+                'Title' => 'User Experience',
+                'BodyText' => $faker->paragraphs(10, true),
+                'ArticleImage' => 'im2.jpeg',
+                'Cat' => 'Interactive Multimedia',
+                'writer_id' => 1
+            ],
+            [
+                'Title' => 'User Experience for Digital Immersive Technology',
+                'BodyText' => $faker->paragraphs(10, true),
+                'ArticleImage' => 'im3.jpeg',
+                'Cat' => 'Interactive Multimedia',
+                'writer_id' => 1
+            ],
 
-        // Software Engineering
-        Materi::create([
-            'title' => 'Pattern Software Design',
-            'imgMateri' => 'se1.jpg',
-            'date' => now(),
-            'deskripsi' => 'Pembahasan mendalam mengenai pola desain perangkat lunak seperti Singleton, Factory, dan Observer.',
-            'Kategori' => 'Sofware Engineering',
-            'writer_id' => 1,
-        ]);
-
-        Materi::create([
-            'title' => 'Agile Software Development',
-            'imgMateri' => 'se2.jpg',
-            'date' => now(),
-            'deskripsi' => 'Pendekatan pengembangan perangkat lunak modern yang fleksibel, kolaboratif, dan berorientasi hasil.',
-            'Kategori' => 'Sofware Engineering',
-            'writer_id' => 1,
-        ]);
-
-        Materi::create([
-            'title' => 'Code Reengineering',
-            'imgMateri' => 'se3.jpg',
-            'date' => now(),
-            'deskripsi' => 'Proses memperbarui dan meningkatkan kualitas kode tanpa mengubah fungsionalitas sistem secara keseluruhan.',
-            'Kategori' => 'Sofware Engineering',
-            'writer_id' => 1,
+            // --- Software Engineering ---
+            [
+                'Title' => 'Pattern Software Design',
+                'BodyText' => $faker->paragraphs(10, true),
+                'ArticleImage' => 'se1.jpg',
+                'Cat' => 'Software Engineering',
+                'writer_id' => 2
+            ],
+            [
+                'Title' => 'Agile Software Development',
+                'BodyText' => $faker->paragraphs(10, true),
+                'ArticleImage' => 'se2.jpg',
+                'Cat' => 'Software Engineering',
+                'writer_id' => 2
+            ],
+            [
+                'Title' => 'Code Reengineering',
+                'BodyText' => $faker->paragraphs(10, true),
+                'ArticleImage' => 'se3.jpeg',
+                'Cat' => 'Software Engineering',
+                'writer_id' => 3
+            ],
         ]);
     }
 }

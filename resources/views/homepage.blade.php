@@ -1,50 +1,40 @@
 @extends('layout.master')
 
-@section('konten')
-
-<div class="row">
-    <div class="col-12">
-        <img src="{{ asset('img/homepage1.jpg') }}" alt="">
-    </div>
-</div>
-
-<div class="container fluid">
+@section('content')
+<div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <div class="row">
-                @forelse($materis as $materi)
-                    <div class="col-md-6 mb-4">
-                        <div class="card border-0 shadow-sm rounded-4 p-3" style="background-color: #f8fafc;">
-                            <img src="{{ asset('img/' . $materi->imgMateri) }}" 
-                                alt="{{ $materi->title }}" 
-                                class="img-fluid rounded-4 mb-3" 
-                                style="height: 180px; width: 100%; object-fit: cover;">
-                            <h5 class="fw-bold mb-1">{{ $materi->title }}</h5>
-                            <small class="text-muted">
-                                {{ \Carbon\Carbon::parse($materi->date)->format('d M Y') }} |
-                                By Writer #{{ $materi->writer_id }}
-                            </small>
-                            <p class="mt-2 text-secondary">
-                                {{ Str::limit($materi->deskripsi, 120, '...') }}
-                            </p>
-                            <a href="{{ route('materi.show', $materi->id) }}" class="btn btn-dark rounded-pill px-4 py-1">
-                                Read more...
-                            </a>
-                        </div>
-                    </div>
-                @empty
-                    <p class="text-muted text-center">Belum ada materi untuk ditampilkan.</p>
-                @endforelse
-            </div>
+            <img src="{{ asset('img/freepik-dj-leaderboard-banner-20251112124726pU4f.png') }}" alt="" style="border-radius: 50px; width: 100%; height: 100%">
         </div>
     </div>
 </div>
 
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+<div class="container">
+    <div class="row">
+        @foreach ($materis as $m)
+        <div class="col-12 pt-5">
+            <div class="card mb-3" style="max-width: auto;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                <img src="{{ asset('img/'.$m->ArticleImage) }}" class="img-fluid rounded" width="500" height="1000">
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title fs-2">{{ $m->Title }}</h5>
+                    <p class="card-text"><small class="text-muted">{{ $m->Date }} | {{ $m->Writer->Name }}</small></p>
+                    <p class="card-text fs-4 text-truncate-3">{{ $m->BodyText }}</p>
 
-   
-
+                    <div class="d-flex justify-content-end">
+                        <a class="btn btn-dark w-25 rounded-pill" href="{{ route('materiContent', $m->id) }}">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
 @endsection
